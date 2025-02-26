@@ -45,6 +45,9 @@ export default function Home() {
   return (
     <>
       <section className="relative min-h-[80vh] w-full flex flex-col md:justify-end items-center bg-brand-1">
+        <div className="absolute min-w-[80rem] md:w-full bottom-0 bg-red-500 px-40 py-4 z-20">
+          <p className="text-white text-center">Próximo inicio de curso 5 de marzo</p>
+        </div>
 
         <div className="relative min-h-[24rem] flex-grow w-full md:absolute top-0 inset-x-0 bottom-1/2 md:bottom-0">
           <div
@@ -52,7 +55,7 @@ export default function Home() {
           <Image src={i00} layout="fill" className="object-cover object-right"/>
         </div>
 
-        <div className="container w-full text-center lg:text-left text-white z-10 p-8">
+        <div className="container w-full text-center lg:text-left text-white z-10 p-8 pb-20">
           <h1
             className="md:w-2/3 relative font-bold ft-11 text-white [text-shadow:_2px_2px_0_rgb(0_0_0_/_20%)]">
             No arriesgues tu futuro ni tu empleo, obtén tu licencia de contratista
@@ -65,7 +68,6 @@ export default function Home() {
             <p className="-ft-2 md:text-left">{cta.description}</p>
             <p className="material-icons animate-bounce"><span className="ft-9">expand_more</span></p>
           </div>
-
         </div>
       </section>
 
