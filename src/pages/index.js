@@ -172,7 +172,7 @@ export default function Home() {
         title="Sin rodeos ni complicaciones: este es nuestro método para ayudarte a obtener tu licencia"
         image={i01}
       />
-      <section className="px-20 my-16">
+      <section className="px-8 md:px-20 my-16">
         <div className="grid grid-cols-1 xl:grid-cols-5 gap-8">
           <div
             className="flex xl:flex-col justify-start items-start w-full rounded-2xl overflow-hidden border border-gray-400">
