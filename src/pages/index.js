@@ -26,6 +26,7 @@ import ico03 from '../../public/landing/icons/03.png';
 import ico04 from '../../public/landing/icons/04.png';
 import ico05 from '../../public/landing/icons/05.png';
 import Faqs from '../components/faqs';
+import fbEvent from '../services/fbEvents';
 
 export default function Home() {
   const [lastClick, setLastClick] = useState('');
@@ -38,7 +39,7 @@ export default function Home() {
   });
 
   const cta = {
-    main: 'Empieza hoy, da clic',
+    main: 'Empieza hoy, llámanos',
     description: 'Inscríbete este mes y obtén $60 de descuento en tu inscripción',
   };
 
@@ -62,8 +63,8 @@ export default function Home() {
           </h1>
           <p className="ft-3 mt-4">Certifícate y trabaja legalmente en Florida</p>
           <div className="flex flex-col justify-center lg:justify-start items-center lg:items-start mt-12">
-            <Link href="#contact">
-              <a onClick={() => setLastClick('hero')} className="button mb-4">{cta.main}</a>
+            <Link href="tel:18888445528">
+              <a onClick={() => fbEvent('Contact')} className="button mb-4">{cta.main}</a>
             </Link>
             <p className="-ft-2 md:text-left">{cta.description}</p>
             <p className="material-icons animate-bounce"><span className="ft-9">expand_more</span></p>
@@ -127,8 +128,8 @@ export default function Home() {
         </div>
         <div className="reading-container">
           <div className="flex flex-col justify-center items-center">
-            <Link href="#contact">
-              <a onClick={() => setLastClick('benefits')} className="button mb-4">{cta.main}</a>
+            <Link href="tel:18888445528">
+              <a onClick={() => fbEvent('Contact')} className="button mb-4">{cta.main}</a>
             </Link>
             <p className="-ft-2 text-center">{cta.description}</p>
           </div>
@@ -162,7 +163,7 @@ export default function Home() {
           </div>
         </div>
         <div className="flex flex-col justify-center items-center mt-16">
-          <Link href="#contact"><a className="button mb-4">{cta.main}</a></Link>
+          <Link href="tel:18888445528"><a onClick={() => fbEvent('Contact')} className="button mb-4">{cta.main}</a></Link>
           <p className="-ft-2 text-center">{cta.description}</p>
         </div>
       </section>
@@ -237,8 +238,8 @@ export default function Home() {
 
         </div>
         <div className="flex flex-col justify-center items-center mt-16">
-          <Link href="#contact">
-            <a onClick={() => setLastClick('models')} className="button mb-4">{cta.main}</a>
+          <Link href="tel:18888445528">
+            <a onClick={() => fbEvent('Contact')} className="button mb-4">{cta.main}</a>
           </Link>
           <p className="-ft-2 text-center">{cta.description}</p>
         </div>
@@ -265,8 +266,8 @@ export default function Home() {
         </div>
 
         <div className="reading-container flex flex-col justify-center items-center mt-16">
-          <Link href="#contact">
-            <a onClick={() => setLastClick('target')} className="button mb-4">{cta.main}</a>
+          <Link href="tel:18888445528">
+            <a onClick={() => fbEvent('Contact')} className="button mb-4">{cta.main}</a>
           </Link>
           <p className="-ft-2 !mt-0 text-white text-center">{cta.description}</p>
         </div>
