@@ -46,9 +46,9 @@ export default function Home() {
   return (
     <>
       <section className="relative min-h-[72rem] w-full flex flex-col md:justify-end items-center bg-brand-1">
-        <div className="absolute min-w-full md:w-full bottom-0 bg-red-500 px-40 py-4 z-20">
-          <p className="text-white text-center">Próximo inicio de curso 5 de marzo</p>
-        </div>
+        {/*<div className="absolute min-w-full md:w-full bottom-0 bg-red-500 px-40 py-4 z-20">*/}
+        {/*  <p className="text-white text-center">Próximo inicio de curso 5 de marzo</p>*/}
+        {/*</div>*/}
 
         <div className="relative min-h-[24rem] flex-grow w-full md:absolute top-0 inset-x-0 bottom-1/2 md:bottom-0">
           <div
