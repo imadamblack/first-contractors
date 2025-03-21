@@ -84,6 +84,10 @@ export default function Survey() {
       setInputError(formStep);
       return;
     }
+    if (watch('experience') === '0-1') {
+      router.push(`/disqualified`);
+      return;
+    }
     setInputError(null);
     window.scrollTo(0, 0);
     return formStep < formSteps.length - 1 && setFormStep(formStep + 1);
