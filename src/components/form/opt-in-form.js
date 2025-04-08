@@ -21,7 +21,7 @@ export default function OptInForm({lastClick = ''}) {
   const onSubmit = (data) => {
     setSending(true);
     data.phone = data.phone.replace(/^(MX)?\+?(52)?\s?0?|\s|\(|\)|-|[a-zA-Z]/g, '');
-    data.dateAdded = new Date().toLocaleString();
+    data.dateAdded = new Date().toLocaleString('en-US');
     data.origin = 'Notoriovs Landing';
     data.lastClick = lastClick;
 
