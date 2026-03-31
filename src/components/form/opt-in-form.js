@@ -29,11 +29,12 @@ export default function OptInForm({lastClick = ''}) {
     data.origin = 'Notoriovs Landing';
     data.lastClick = lastClick;
 
+    const qualified = leadQualifier(data);
+
     const _fbc = getCookie('_fbc');
     const _fbp = getCookie('_fbp');
-    const payload = {...data, _fbc, _fbp};
+    const payload = {...data, qualified, _fbc, _fbp};
 
-    const qualified = leadQualifier(data);
 
     fetch(info.optInWebhook, {
       method: 'POST',
