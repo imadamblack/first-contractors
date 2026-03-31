@@ -5,10 +5,12 @@ export default function ThankYou() {
     <section className="relative flex flex-col flex-grow justify-center pt-20 px-0">
       <div className="container md:w-1/2 flex flex-col items-center gap-8">
         <h2 className="ft-8 text-center">
-          Con base en tus respuestas creemos que no calificas para tu certificación.
+          Aún no estás en el punto para obtener la certificación… pero sí estás en el punto perfecto para empezar.
         </h2>
         <p className="ft-4 text-center">
-          Sí aún así deseas tomar el curso de preparación para tu certificación estatal, adelante, contáctanos.
+          Muchos de nuestros alumnos comienzan el curso mientras completan su experiencia o reciben su número de seguro social, para no empezar desde cero después.
+          <br/><br/>
+          👉 Llámanos y te decimos cómo aprovechar este tiempo a tu favor.
         </p>
         <div className="flex flex-col items-center justify-center gap-10">
           <a
