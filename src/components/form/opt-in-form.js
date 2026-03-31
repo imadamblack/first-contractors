@@ -18,6 +18,10 @@ export default function OptInForm({lastClick = ''}) {
     formState: {errors},
   } = methods;
 
+  const leadQualifier = ({experience, ssn}) => {
+    return !(ssn === 'no' || experience === '0-3');
+  };
+
   const onSubmit = (data) => {
     setSending(true);
     data.phone = data.phone.replace(/^(MX)?\+?(52)?\s?0?|\s|\(|\)|-|[a-zA-Z]/g, '');
@@ -29,6 +33,8 @@ export default function OptInForm({lastClick = ''}) {
     const _fbp = getCookie('_fbp');
     const payload = {...data, _fbc, _fbp};
 
+    const qualified = leadQualifier(data);
+
     fetch(info.optInWebhook, {
       method: 'POST',
       body: JSON.stringify(payload),
@@ -38,21 +44,24 @@ export default function OptInForm({lastClick = ''}) {
     }).then((result) => result.json())
       // Send FB Event
       .then(({id}) => {
-        fbEvent(
-          'Lead',
-          {email: data.email, phone: data.phone, externalID: id},
-        );
-        setCookie('lead', {...data, id});
-        router.push(`/survey?id=${id}`);
+        setCookie('lead', {...data});
+        if (qualified) {
+          fbEvent(
+            'Lead',
+            {email: data.email, phone: data.phone, externalID: id},
+          );
+          router.push(`/thankyou`);
+        } else {
+          fbEvent(
+            'CompleteRegistration',
+            {email: data.email, phone: data.phone, externalID: id},
+          );
+          router.push(`/not-elegible`);
+        }
       })
       .catch(() => {
-        fbEvent(
-          'Lead',
-          {email: data.email, phone: data.phone, externalID: ''},
-        );
-        setCookie('lead', {...data});
         router.push(`/thankyou`);
-      })
+      });
   };
 
   return (
@@ -88,6 +97,55 @@ export default function OptInForm({lastClick = ''}) {
           className={errors.phone && '!bg-red-200'}
           onKeyDown={restrictNumber}
           placeholder="Teléfono móvil"/>
+
+        <Select
+          {...register(
+            'contractorType',
+            {required: true},
+          )}
+          placeholder="¿Qué tipo de contratista eres?"
+          options={[
+            {value: 'general', label: 'General'},
+            {value: 'building', label: 'Edificación'},
+            {value: 'residential', label: 'Residencial'},
+            {value: 'air-conditioner', label: 'Aire Acondicionado'},
+            {value: 'mechanical', label: 'Mecánico'},
+            {value: 'plumbing', label: 'Plomero'},
+            {value: 'roofing', label: 'Techos'},
+            {value: 'glass', label: 'Vidrios y Cristales'},
+            {value: 'drywall', label: 'Drywall'},
+            {value: 'pool', label: 'Albercas'},
+            {value: 'solar', label: 'Solar'},
+            {value: 'other', label: 'Otro'},
+          ]}
+        />
+
+        <Select
+          {...register(
+            'ssn',
+            {required: true},
+          )}
+          placeholder="¿Ya cuentas con tu SSN?"
+          options={[
+            {value: 'yes', label: 'Sí'},
+            {value: 'in-process', label: 'Está en trámite'},
+            {value: 'no', label: 'No'},
+          ]}
+        />
+
+        <Select
+          {...register(
+            'experience',
+            {required: true},
+          )}
+          placeholder="¿Cuántos años tienes de experiencia?"
+          options={[
+            {value: '0-3', label: 'Menos de 3 años'},
+            {value: '3-5', label: '3 a 5 años'},
+            {value: '5-10', label: '5 a 10 años'},
+            {value: '10+', label: 'Más de 10 años'},
+          ]}
+        />
 
         <button
           disabled={sending}
