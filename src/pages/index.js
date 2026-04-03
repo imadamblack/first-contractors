@@ -59,7 +59,7 @@ export default function Home() {
         <div className="container w-full text-center lg:text-left text-white z-10 p-8 pb-20">
           <h1
             className="md:w-2/3 relative font-bold ft-11 text-white [text-shadow:_2px_2px_0_rgb(0_0_0_/_20%)]">
-            No arriesgues tu futuro ni tu empleo, obtén tu licencia de contratista
+            No arriesgues tu futuro ni tu empleo, obtén tu licencia de contratista sin salir de casa
           </h1>
           <p className="ft-3 mt-4">Certifícate y trabaja legalmente en Florida</p>
           <div className="flex flex-col justify-center lg:justify-start items-center lg:items-start mt-12">
